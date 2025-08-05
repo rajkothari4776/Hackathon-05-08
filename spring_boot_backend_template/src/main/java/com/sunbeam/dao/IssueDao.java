@@ -10,4 +10,6 @@ public interface IssueDao extends JpaRepository<IssueRecord, Long> {
     List<IssueRecord> findByStatus(IssueStatus status);
     List<IssueRecord> findByMemberId(Long memberId);
     List<IssueRecord> findByBookCopyBookId(Long bookId);
+    boolean existsByCopyIdAndStatus(Long copyId, IssueStatus status);
+
 }

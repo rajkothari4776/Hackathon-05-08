@@ -9,4 +9,6 @@ import java.util.List;
 public interface BookDao extends JpaRepository<Book, Long> {
     List<BookCopy> findByBookId(Long bookId);
     boolean existsByCopyIdAndStatus(Long copyId, String status);
+    List<Book> findByTitleContainingIgnoreCaseOrAuthorContainingIgnoreCase(String title, String author);
+
 }

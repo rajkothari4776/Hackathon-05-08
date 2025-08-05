@@ -1,10 +1,18 @@
 package com.sunbeam.controller;
 
 
+import com.sunbeam.DTO.BookCopyDTO;
+import com.sunbeam.entity.CopyStatus;
+import com.sunbeam.entity.IssueStatus;
+import com.sunbeam.service.BookCopyService;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/copies")
@@ -12,7 +20,8 @@ import org.springframework.web.bind.annotation.*;
 @Setter
 @AllArgsConstructor
 public class BookCopyController {
-    @Autowired private BookCopyService bookCopyService;
+    @Autowired
+    private BookCopyService bookCopyService;
 
     @PostMapping("/{bookId}")
     public ResponseEntity<BookCopyDTO> addCopy(@PathVariable Long bookId, @RequestBody BookCopyDTO dto) {
@@ -36,7 +45,7 @@ public class BookCopyController {
     }
 
     @PatchMapping("/{copyId}/status")
-    public ResponseEntity<BookCopyDTO> changeStatus(@PathVariable Long copyId, @RequestParam String status) {
+    public ResponseEntity<BookCopyDTO> changeStatus(@PathVariable Long copyId, @RequestParam CopyStatus status) {
         return ResponseEntity.ok(bookCopyService.changeStatus(copyId, status));
     }
 }

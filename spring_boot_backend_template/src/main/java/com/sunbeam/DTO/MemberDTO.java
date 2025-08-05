@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Setter
 public class MemberDTO {
 
-    public class MemberDTO {
+
         private Long id;
         private String name;
         private String email;
@@ -18,6 +18,6 @@ public class MemberDTO {
         private Boolean isActive;
         private Boolean isPaid;
         private LocalDate membershipDate;
-    }
+
 
 }

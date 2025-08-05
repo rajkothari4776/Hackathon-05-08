@@ -1,12 +1,13 @@
 package com.sunbeam.service;
 
-public interface BookService {
-    public interface BookService {
-        BookCopyDTO addCopy(Long bookId, BookCopyDTO dto);
-        List<BookCopyDTO> getCopiesByBook(Long bookId);
-        BookCopyDTO updateCopy(Long copyId, BookCopyDTO dto);
-        void deleteCopy(Long copyId);
-        BookCopyDTO changeStatus(Long copyId, String status);
-    }
+import com.sunbeam.DTO.BookDTO;
+import java.util.List;
 
+public interface BookService {
+    BookDTO addBook(BookDTO bookDto);
+    BookDTO updateBook(Long bookId, BookDTO bookDto);
+    void deleteBook(Long bookId);
+    BookDTO getBookById(Long bookId);
+    List<BookDTO> getAllBooks();
+    List<BookDTO> searchBooks(String keyword); // Optional: for search by title/author
 }

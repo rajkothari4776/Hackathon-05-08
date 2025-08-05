@@ -1,13 +1,26 @@
 package com.sunbeam.service;
 
+import com.sunbeam.DTO.PaymentDTO;
 import com.sunbeam.dao.MemberDao;
 import com.sunbeam.dao.PaymentDao;
+import com.sunbeam.entity.Member;
+import com.sunbeam.entity.Payment;
+import com.sunbeam.entity.PaymentType;
+import jakarta.transaction.Transactional;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class PaymentServiceImpl implements PaymentService {
 
-    @Autowired private PaymentDao paymentDao;
+    @Autowired
+    private PaymentDao paymentDao;
     @Autowired private MemberDao memberDao;
     @Autowired private ModelMapper mapper;
 
@@ -25,7 +38,7 @@ public class PaymentServiceImpl implements PaymentService {
         String receiptNo = generateReceiptNumber();
         payment.setReceiptNumber(receiptNo);
 
-        if (dto.getPaymentType().equalsIgnoreCase("MEMBERSHIP")) {
+        if (dto.getPaymentType().equals(PaymentType.MEMBERSHIP)) {
             member.setIsPaid(true);
             memberDao.save(member);
         }

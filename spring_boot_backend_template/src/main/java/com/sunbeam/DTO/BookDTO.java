@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -16,7 +17,7 @@ public class BookDTO {
     private String publisher;
     private String subject;         // or `category` if you're using that field name
     private String description;
-    private Double price;
+    private BigDecimal price;
 
     private Integer totalCopies;
     private Integer availableCopies;

@@ -1,5 +1,6 @@
 package com.sunbeam.controller;
 
+import com.sunbeam.DTO.BookDTO;
 import com.sunbeam.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
